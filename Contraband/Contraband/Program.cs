@@ -18,8 +18,10 @@ namespace Contraband
                 }
 
                 TheGoodStuff.RandomCollection<Car> carList = new TheGoodStuff.RandomCollection<Car>(); //list for all the cars with random positions, basically just a list, there's no real need for their index to be randomized
+                Console.WriteLine(); //for load screen
                 for (int i = 0; i < carAmount; i++) //loops for all the cars that will be created
                 {
+                    Console.Write("."); //load screen
                     Thread.Sleep(10); //waits for better randomization 
                     switch (TheGoodStuff.generator.Next(0, 2)) //50 50 chance to create different cars
                     {
@@ -32,6 +34,7 @@ namespace Contraband
                             break;
                     }
                 }
+                Console.Clear();
 
                 int totArrest = 0; //total cars arrested
                 string[] options = { "Undersök en ny bil", "Avsluta" };
@@ -43,10 +46,10 @@ namespace Contraband
                         carList.array[0].PrintStats(); //looks at car
                         if (carList.array[0].Examine()) //if you found contraband in the car
                         {
-                            totArrest++; 
+                            totArrest++;
                             Console.WriteLine("Du arresterade föraren");
                         }
-                        else 
+                        else
                         {
                             Console.WriteLine("Du lät föraren köra vidare");
                         }
